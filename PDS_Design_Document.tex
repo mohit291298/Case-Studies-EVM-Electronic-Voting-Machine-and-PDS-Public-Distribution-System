@@ -1,0 +1,113 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm,amssymb}
+
+
+
+
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\title{A Case Study on Public Distribution System(PDS)}
+\author{Mohit Gupta(2016CS50433) and Anoosh Kotak }
+\date{April 16, 2018}
+
+\begin{document}
+
+\maketitle
+
+
+ This paper is a case study on an Indian food security system,namely \textbf{Public distribution system (PDS)}. Established by the Government of India under Ministry of Consumer Affairs, Food, and Public Distribution and managed jointly with state governments in India, it distributes subsidized food and non-food items to India's poor. 
+ 
+ Here, we work out a detailed requirement specification for effective PDS and also proposes a functional design for the same.
+Several possibilities of evaluating the designs using formal techniques are also explored in the process.
+
+
+\section{Existing Public Distribution System}
+\subsection{Aadhaar—Based Biometric Authentication (ABBA)}
+\begin{enumerate}
+    \item \textbf{What is ABBA?} 
+    
+    ABBA’s linchpin is the electronic “Point of Sale” (PoS) machine, a handheld device installed at every PDS outlet (“ration shop”) and connected to the Internet. The list of ration cards attached to that outlet, and their respective entitlements, are stored in the PoS machine and updated every month. 
+    \item \textbf{Working(User-Machine Interaction):}
+    
+    When a cardholder turns ups, the PoS machine first “authenticates” her by matching her fingerprints with the biometric data stored against her Aadhaar number in the Central Identities Data Repository (CIDR). The machine then generates a receipt with the person’s entitlements, which are also audible from a recorded message (if the machine’s voice-over facility is functional and the dealer activates it, which is not always the case). The transaction details are also supposed to be entered by the dealer in the person’s ration card.
+    
+    \item \textbf{Processing the data}
+    
+    Meanwhile, the PoS machine generates electronic transaction records that are automatically uploaded on the Jharkhand government’s PDS website (http://aahar.jharkhand.gov.in/)—hereafter the “Aahar website.” The Aahar website, incidentally, is relatively well designed and extremely useful.
+\end{enumerate}
+
+\paragraph{}
+
+
+\section{Challenges}
+
+\begin{enumerate}
+
+    \item   Transaction failures
+    \item Double transaction, single given
+    \item Separating authentication and transaction
+    \item Faking authentication failure
+    \item Fingerprint not matching
+    \item No POS able present
+    \item Non-fixed schedule
+
+\end{enumerate}
+
+\pagebreak
+
+\section{Important functionalities required by the Public distribution System}
+
+\begin{itemize}
+    \item   Data easily verifiable
+    \item No leakage due to wrong person taking it away
+    \item Electronic easily verifiable/Searchable data
+    \item One member can take for the rest of family
+    \item No multiple transaction by same identity
+    \item Independent of the network issue
+    \item Low transaction failures
+    \item Prevention from Identity theft
+
+\end{itemize}
+
+\subsection{Points To Ponder}
+
+\begin{itemize}
+    \item Most of the disadvantages or challenges faced(Challenges: $ 1, 3, 4, 6, 7 $)  boil down to one single feature of ABBA, that is the requirement of internet connectivity.
+    
+    \item Also a pure smart-card system can lead to identity theft and duplication problems.
+\end{itemize}
+
+\pagebreak
+
+\section{Proposed Public Distribution System}
+
+
+\bigskip
+
+{\large \textit{To tackle both the problems, we propose a Biometric Smart-card system, where in the card stores the details of person including the fingerprint details}
+}
+\subsection{Working}
+
+For authentication, the card is inserted in the offline reader and fingerprints of the person is matched with that on the card, along with general authentication of the card. If these match, then the Unique identification details of that card is stored in the memory of reader, and the appropriate amount of ration (based on details in the card) and receipt is issued. 
+
+
+\subsection{Important Features}
+
+Some of the important features of the proposed PDS are as follows:
+
+
+\begin{enumerate}
+    \item   Card + Bio-metric Reader fed with the amount of ration with merchant when a new lot of ration comes in. Thus based on the ration issued, the total quantity of ration remaining can be read through it in offline mode itself.
+    \item   Voice reader of the receipt.
+    \item   Option of verification through in case of Bio-metric failure.
+    \item   Any household member can collect for others with only card verification (with at least one bio-metric authentication.
+    \item   Monthly update of the offline data online while taking new ration lot (based on the remaining ration shown).
+    \item Issue of ration on fixed days of month, after fixed intervals. 
+\end{enumerate}
+
+
+\end{document}
